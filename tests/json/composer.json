@@ -1,0 +1,32 @@
+{
+	"name": "forrest79/composer-ny",
+	"authors": [
+		{
+			"name": "Jakub Trmota",
+			"email": "jakub@trmota.cz"
+		}
+	],
+	"require": {
+		"composer/composer": "2.3.5",
+		"php": ">=8.0"
+	},
+	"require-dev": {
+		"squizlabs/php_codesniffer": "^3.5"
+	},
+	"autoload": {
+		"psr-4": {
+			"Forrest79\\ComposerNY\\": "src"
+		}
+	},
+	"bin": [
+		"bin/composer"
+	],
+	"scripts": {
+		"phpcs": "vendor/bin/phpcs -s src"
+	},
+	"config": {
+		"allow-plugins": {
+			"dealerdirect/phpcodesniffer-composer-installer": false
+		}
+	}
+}

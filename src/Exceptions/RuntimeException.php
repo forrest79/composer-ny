@@ -2,7 +2,7 @@
 
 namespace Forrest79\ComposerNY\Exceptions;
 
-final class KeepComposerJsonException extends Exception
+final class RuntimeException extends Exception
 {
 
 }

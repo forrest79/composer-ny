@@ -13,12 +13,12 @@ if (PHP_VERSION_ID < 70205) {
 }
 
 setlocale(LC_ALL, 'C');
-require __DIR__.'/../vendor/composer/composer/src/bootstrap.php'; // @pmgdev update
+require __DIR__.'/../vendor/composer/composer/src/bootstrap.php'; // @ComposerNY update
 
+use Forrest79\ComposerNY\Console\Application; // @ComposerNY update
 use Composer\XdebugHandler\XdebugHandler;
 use Composer\Util\Platform;
 use Composer\Util\ErrorHandler;
-use Forrest79\ComposerNY\Console\Application; // @ComposerNY update
 
 error_reporting(-1);
 
@@ -88,6 +88,6 @@ ErrorHandler::register();
 
 // run the command application
 $application = new Application();
-// @pmgdev update
+// @ComposerNY update
 $application->setAutoExit(false);
 exit($application->run());

@@ -10,6 +10,8 @@ final class Application extends Composer\Console\Application
 {
 	private const VERSION = '1.0.0';
 
+	private ComposerNY\SourceFile $composerSourceFile;
+
 	/**
 	 * When running multiple Commands on one Application instance do logic with composer.neon/composer.yaml only on the first Command.
 	 */
@@ -23,60 +25,46 @@ final class Application extends Composer\Console\Application
 		}
 
 		$this->firstDoRun = FALSE;
+		$this->composerSourceFile = new ComposerNY\SourceFile($this->getWorkingDirectory($input));
 
-		$workingDir = $this->getWorkingDirectory($input);
-
-		$composerJsonFile = new ComposerNY\Files\ComposerJson($workingDir);
-
-		/** @var array<ComposerNY\Files\ComposerFile> $composerFiles */
-		$composerFiles = [
-			'json' => $composerJsonFile,
-			'neon' => new ComposerNY\Files\ComposerNeon($workingDir),
-			'yaml' => new ComposerNY\Files\ComposerYaml($workingDir),
-		];
-
-		$existingFiles = [];
-
-		foreach ($composerFiles as $type => $file) {
-			if ($file->exists()) {
-				$existingFiles[] = $file->getComposerFile();
-			} else {
-				unset($composerFiles[$type]);
-			}
-		}
-
-		$composerFile = NULL;
 		$exitCode = Console\Command\Command::FAILURE;
 
-		if (count($composerFiles) > 1) {
+		try {
+			$this->composerSourceFile->prepareJson();
+
+			$exitCode = parent::doRun($input, $output);
+
+			if (!$this->composerSourceFile->isJson()) {
+				$output->writeln(PHP_EOL . sprintf('<comment>[Data from %s was used]</comment>', $this->composerSourceFile->getSource()));
+			}
+		} catch (ComposerNY\Exceptions\TooManySourcesException $e) {
 			$output->writeln(sprintf(
 				'<error>Files %s are presented in working directory - use just one of them.</error>',
-				implode(' and ', $existingFiles),
+				implode(' and ', $e->getExistingSources()),
 			));
-			return $exitCode;
-		} else if (count($composerFiles) === 1) {
-			$composerFile = reset($composerFiles);
-		}
-
-		$isComposerJson = $composerFile === $composerJsonFile;
-
-		if (!$isComposerJson) {
-			$composerFile->saveJson();
-		}
-
-		try {
-			$exitCode = parent::doRun($input, $output);
-			if (!$isComposerJson) {
-				$output->writeln(PHP_EOL . sprintf('<comment>composer.json generated from %s was used.</comment>', $composerFile->getComposerFile()));
-			}
-		} catch (ComposerNY\Exceptions\KeepComposerJsonException) {
-			$composerJsonFile = NULL;
-			$exitCode = Console\Command\Command::SUCCESS;
 		} finally {
-			$composerJsonFile?->remove();
+			$this->composerSourceFile->clean();
 		}
 
 		return $exitCode;
+	}
+
+
+	public function composerKeepJson(): void
+	{
+		$this->composerSourceFile->keepJson();
+	}
+
+
+	public function composerGetSourceFile(): string
+	{
+		return $this->composerSourceFile->getSource();
+	}
+
+
+	public function composerIsJsonSource(): bool
+	{
+		return $this->composerSourceFile->isJson();
 	}
 
 
@@ -98,18 +86,22 @@ final class Application extends Composer\Console\Application
 
 	public function getLongVersion(): string
 	{
-		return parent::getLongVersion() . sprintf(' (N)eon (Y)aml <info>%s</info>)', self::VERSION);
+		return parent::getLongVersion() . sprintf(' {(N)eon (Y)aml <info>%s</info>}', self::VERSION);
 	}
 
 
 	private function getWorkingDirectory(Console\Input\InputInterface $input): string
 	{
 		$workingDir = $input->getParameterOption(['--working-dir', '-d']);
+		assert($workingDir === FALSE || is_string($workingDir));
+
 		if ($workingDir !== FALSE && !is_dir($workingDir)) {
-			throw new \RuntimeException(sprintf('Invalid working directory specified, %s does not exist.', $workingDir));
+			throw new ComposerNY\Exceptions\RuntimeException(sprintf('Invalid working directory specified, %s does not exist.', $workingDir));
 		}
 
-		return $workingDir === FALSE ? $this->getInitialWorkingDirectory() : $workingDir;
+		return $workingDir === FALSE
+			? ($this->getInitialWorkingDirectory() === FALSE ? throw new ComposerNY\Exceptions\RuntimeException('Can\'t get initial working directory') : $this->getInitialWorkingDirectory())
+			: $workingDir;
 	}
 
 }

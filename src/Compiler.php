@@ -110,6 +110,7 @@ final class Compiler
 			->notPath('/\/(composer\.(json|lock)|[A-Z]+\.md|\.gitignore|appveyor.yml|phpunit\.xml\.dist|phpstan\.neon\.dist|phpstan-config\.neon|phpstan-baseline\.neon)$/')
 			->notPath('/bin\/(jsonlint|validate-json|simple-phpunit|phpstan|phpstan\.phar)(\.bat)?$/')
 			->notPath('symfony/console/Resources/completion.bash')
+			->notPath('symfony/yaml/Resources/bin/yaml-lint')
 			->notPath('justinrainbow/json-schema/demo/')
 			->notPath('justinrainbow/json-schema/dist/')
 			->notPath('nette/neon/contributing.md')
@@ -117,6 +118,7 @@ final class Compiler
 			->notPath('nette/neon/readme.md')
 			->notPath('bin/composer')
 			->notPath('bin/neon-lint')
+			->notPath('bin/yaml-lint')
 			->notPath('composer/installed.json')
 			->notPath('composer/CODE_OF_CONDUCT.md')
 			->notPath('composer/PORTING_INFO')
@@ -244,6 +246,7 @@ final class Compiler
 	private function addComposerBin(\Phar $phar): void
 	{
 		$content = file_get_contents(__DIR__ . '/../bin/composer');
+		assert($content !== FALSE);
 		$content = Preg::replace('{^#!/usr/bin/env php\s*}', '', $content);
 		$phar->addFromString('bin/composer', $content);
 	}

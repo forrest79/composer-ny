@@ -4,9 +4,3 @@ includes:
 
 parameters:
 	level: max
-
-	ignoreErrors:
-#		-
-#			message: '#^Cannot call method getQuery\(\) on Forrest79\\PhPgSql\\Db\\AsyncQuery\|null\.$#'
-#			path: %rootDir%/../../../src/Db/AsyncQuery.php
-#			count: 1

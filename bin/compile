@@ -30,7 +30,7 @@ if (0 !== $result) {
 }
 chdir($cwd);
 
-require __DIR__.'/../vendor/composer/composer/src/bootstrap.php'; // @pmgdev update
+require __DIR__.'/../vendor/composer/composer/src/bootstrap.php'; // @ComposerNY update
 
 use Forrest79\ComposerNY\Compiler; // @ComposerNY update
 

@@ -7,6 +7,9 @@ use Symfony\Component\Console\Command;
 use Symfony\Component\Console\Input;
 use Symfony\Component\Console\Output;
 
+/**
+ * @method ComposerNY\Console\Application getApplication()
+ */
 final class GenerateJson extends Command\Command
 {
 
@@ -24,7 +27,15 @@ final class GenerateJson extends Command\Command
 
 	protected function execute(Input\InputInterface $input, Output\OutputInterface $output): int
 	{
-		throw new ComposerNY\Exceptions\KeepComposerJsonException();
+		if ($this->getApplication()->composerIsJsonSource()) {
+			$output->writeln('<comment>There is already original composer.json, no other was generated.</comment>');
+		} else {
+			$this->getApplication()->composerKeepJson();
+
+			$output->writeln(sprintf('<info>composer.json was generated from %s.</info>', $this->getApplication()->composerGetSourceFile()));
+		}
+
+		return self::SUCCESS;
 	}
 
 }

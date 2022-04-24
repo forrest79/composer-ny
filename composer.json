@@ -2,9 +2,8 @@
 	"name": "forrest79/composer-ny",
 	"authors": [
 		{
-			"name": "Developers of PMG",
-			"email": "dev@csfd.cz",
-			"role": "Developer"
+			"name": "Jakub Trmota",
+			"email": "jakub@trmota.cz"
 		}
 	],
 	"require": {
@@ -12,8 +11,12 @@
 		"nette/neon": "^3.3",
 		"php": ">=8.0",
 		"symfony/console": "^6.0",
-		"symfony/yaml": "^6.0",
-		"bircher/php-merge": "^4.0"
+		"symfony/yaml": "^6.0"
+	},
+	"require-dev": {
+		"forrest79/phpcs": "^0.3",
+		"phpstan/phpstan": "^1.5",
+		"phpstan/phpstan-strict-rules": "^1.1"
 	},
 	"autoload": {
 		"psr-4": {
@@ -23,15 +26,11 @@
 	"bin": [
 		"bin/composer"
 	],
-	"require-dev": {
-		"forrest79/phpcs": "^0.3.0",
-		"phpstan/phpstan": "^1.5",
-		"phpstan/phpstan-strict-rules": "^1.1"
-	},
 	"scripts": {
-		"compile": "@php -dphar.readonly=0 bin/compile",
+		"compile": "@php -dphar.readonly=0 bin/compile && composer install -q --dev",
 		"phpcs": "vendor/bin/phpcs -s src",
-		"phpstan": "vendor/bin/phpstan analyse src"
+		"phpstan": "vendor/bin/phpstan analyse src",
+		"tests": "bin/composer && composer compile && tests/run-tests"
 	},
 	"config": {
 		"allow-plugins": {

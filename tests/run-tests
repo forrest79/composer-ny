@@ -1,0 +1,4 @@
+#!/bin/sh
+
+(cd ${0%/*}/json && ../../bin/composer update) && (cd ${0%/*}/neon && ../../bin/composer update) && (cd ${0%/*}/yml && ../../bin/composer update) && (cd ${0%/*}/yaml && ../../bin/composer update) \
+  && (cd ${0%/*}/json && ../../bin/composer require forrest79/phpcs) && (cd ${0%/*}/neon && ../../bin/composer require forrest79/phpcs) && (cd ${0%/*}/yml && ../../bin/composer require forrest79/phpcs) && (cd ${0%/*}/yaml && ../../bin/composer require forrest79/phpcs)
