@@ -110,6 +110,7 @@ final class Compiler
 			->notPath('/\/(composer\.(json|lock)|[A-Z]+\.md|\.gitignore|appveyor.yml|phpunit\.xml\.dist|phpstan\.neon\.dist|phpstan-config\.neon|phpstan-baseline\.neon)$/')
 			->notPath('/bin\/(jsonlint|validate-json|simple-phpunit|phpstan|phpstan\.phar)(\.bat)?$/')
 			->notPath('symfony/console/Resources/completion.bash')
+			->notPath('symfony/console/Resources/completion.fish')
 			->notPath('symfony/yaml/Resources/bin/yaml-lint')
 			->notPath('justinrainbow/json-schema/demo/')
 			->notPath('justinrainbow/json-schema/dist/')

@@ -23,7 +23,7 @@ authors:
         email: jakub@trmota.cz
 
 require:
-    composer/composer: 2.3.5
+    composer/composer: 2.3.6
     php: '>=8.0'
 
 require-dev:
@@ -57,7 +57,7 @@ authors:
 		email: jakub@trmota.cz
 
 require:
-	composer/composer: '2.3.5'
+	composer/composer: '2.3.6'
 	php: '>=8.0'
 
 require-dev:
@@ -96,5 +96,5 @@ You can manually download compiled `phar` from releases or replace original Comp
 
 ```bash
 $ which composer # ie. `/usr/local/bin/composer`
-$ sudo wget -O /usr/local/bin/composer https://github.com/forrest79/ComposerNY/releases/download/v2.3.5/composer.phar
+$ sudo wget -O /usr/local/bin/composer https://github.com/forrest79/ComposerNY/releases/download/v2.3.6/composer.phar
 ```
