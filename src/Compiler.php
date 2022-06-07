@@ -130,6 +130,7 @@ final class Compiler
 			->notPath('composer/res')
 			->notPath('composer/composer/src/Composer/Autoload/ClassLoader.php')
 			->notPath('composer/composer/src/Composer/InstalledVersions.php')
+			->notPath('composer/composer/phpstan/rules.neon')
 			->notName('')
 			->exclude('Tests')
 			->exclude('tests')
