@@ -8,7 +8,8 @@
 	],
 	"require": {
 		"composer/composer": "2.3.5",
-		"php": ">=8.0"
+		"php": ">=8.0",
+		"forrest79/phpcs": "^0.5.0"
 	},
 	"require-dev": {
 		"squizlabs/php_codesniffer": "^3.5"
