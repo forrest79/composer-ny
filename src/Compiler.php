@@ -28,7 +28,7 @@ use Symfony\Component\Finder\Finder;
  */
 final class Compiler
 {
-	private const ORIGINAL_COMPILER_MD5_HASH = '8d26b8b7f0d1afbbe1f18e40fe87e2f8';
+	private const ORIGINAL_COMPILER_MD5_HASH = '315618db8a6dee403920e97a4687b85b';
 
 
 	public function compile(string $pharFile = 'composer.phar'): void
@@ -107,9 +107,8 @@ final class Compiler
 		$finder = new Finder();
 		$finder->files()
 			->ignoreVCS(TRUE)
-			->notPath('/\/(composer\.(json|lock)|[A-Z]+\.md|\.gitignore|appveyor.yml|phpunit\.xml\.dist|phpstan\.neon\.dist|phpstan-config\.neon|phpstan-baseline\.neon)$/')
+			->notPath('/\/(composer\.(json|lock)|[A-Z]+\.md(?:own)?|\.gitignore|appveyor.yml|phpunit\.xml\.dist|phpstan\.neon\.dist|phpstan-config\.neon|phpstan-baseline\.neon)$/')
 			->notPath('/bin\/(jsonlint|validate-json|simple-phpunit|phpstan|phpstan\.phar)(\.bat)?$/')
-			->notPath('symfony/console/Resources/completion.bash')
 			->notPath('symfony/console/Resources/completion.fish')
 			->notPath('symfony/yaml/Resources/bin/yaml-lint')
 			->notPath('justinrainbow/json-schema/demo/')
@@ -145,6 +144,7 @@ final class Compiler
 			__DIR__ . '/../vendor/composer/spdx-licenses/res/spdx-licenses.json',
 			CaBundle::getBundledCaBundlePath(),
 			__DIR__ . '/../vendor/symfony/console/Resources/bin/hiddeninput.exe',
+			__DIR__ . '/../vendor/symfony/console/Resources/completion.bash',
 		] as $file) {
 			$extraFiles[$file] = realpath($file);
 			if (!file_exists($file)) {
