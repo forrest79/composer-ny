@@ -28,7 +28,7 @@ use Symfony\Component\Finder\Finder;
  */
 final class Compiler
 {
-	private const ORIGINAL_COMPILER_MD5_HASH = 'c2ae7c19709a79665e752b0a8ca2b707';
+	private const ORIGINAL_COMPILER_MD5_HASH = '307b4da2875d00e8a7e05191369a6e54';
 
 
 	public function compile(string $pharFile = 'composer.phar'): void
