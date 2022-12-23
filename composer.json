@@ -7,7 +7,7 @@
 		}
 	],
 	"require": {
-		"composer/composer": "2.4.4",
+		"composer/composer": "2.5.0",
 		"nette/neon": "^3.3",
 		"php": ">=8.0",
 		"symfony/console": "^6.0",
@@ -15,8 +15,8 @@
 	},
 	"require-dev": {
 		"forrest79/phpcs": "^0.7",
-		"phpstan/phpstan": "^1.7",
-		"phpstan/phpstan-strict-rules": "^1.2"
+		"phpstan/phpstan": "^1.9",
+		"phpstan/phpstan-strict-rules": "^1.4"
 	},
 	"autoload": {
 		"psr-4": {
@@ -33,7 +33,10 @@
 		"tests": "bin/composer && composer compile && tests/run-tests"
 	},
 	"config": {
-		"allow-plugins": {
+		"platform": {
+        	"php": "8.0.2"
+		},
+ 		"allow-plugins": {
 			"dealerdirect/phpcodesniffer-composer-installer": false
 		}
 	}
