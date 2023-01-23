@@ -8,7 +8,7 @@
 	],
 	"require": {
 		"composer/composer": "2.5.1",
-		"nette/neon": "^3.3",
+		"nette/neon": "^3.4",
 		"php": ">=8.0",
 		"symfony/console": "^6.0",
 		"symfony/yaml": "^6.0"
