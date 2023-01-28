@@ -1,8 +1,6 @@
 <?xml version="1.0"?>
 <ruleset name="PhPgSql">
-	<rule ref="./vendor/forrest79/phpcs/Forrest79CodingStandard/ruleset.xml">
-		<exclude name="Generic.PHP.LowerCaseType.PropertyTypeFound"/>
-	</rule>
+	<rule ref="./vendor/forrest79/phpcs/Forrest79CodingStandard/ruleset.xml"/>
 
 	<rule ref="SlevomatCodingStandard.Files.TypeNameMatchesFileName">
 		<properties>
@@ -10,25 +8,5 @@
 				src=>Forrest79\ComposerNY,
 			"/>
 		</properties>
-	</rule>
-
-	<rule ref="Forrest79CodingStandard.Exceptions.ExceptionDeclaration.NotChainable">
-		<exclude-pattern>src/Exceptions/TooManySourcesException.php</exclude-pattern>
-	</rule>
-
-	<rule ref="SlevomatCodingStandard.ControlStructures.AssignmentInCondition.AssignmentInCondition">
-		<exclude-pattern>src/Compiler.php</exclude-pattern>
-	</rule>
-
-	<rule ref="SlevomatCodingStandard.Functions.DisallowArrowFunction.DisallowedArrowFunction">
-		<exclude-pattern>src/Console/Application.php</exclude-pattern>
-	</rule>
-
-	<rule ref="SlevomatCodingStandard.Functions.UnusedParameter.UnusedParameter">
-		<exclude-pattern>src/Commands/GenerateJson.php</exclude-pattern>
-	</rule>
-
-	<rule ref="Squiz.PHP.Heredoc.NotAllowed">
-		<exclude-pattern>src/Compiler.php</exclude-pattern>
 	</rule>
 </ruleset>

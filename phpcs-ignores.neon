@@ -1,0 +1,25 @@
+ignoreErrors:
+	-
+		sniff: SlevomatCodingStandard.Functions.UnusedParameter.UnusedParameter
+		message: Unused parameter $input.
+		count: 1
+		path: src/Commands/GenerateJson.php
+
+	-
+		sniff: SlevomatCodingStandard.ControlStructures.AssignmentInCondition.AssignmentInCondition
+		message: Assignment in if condition is not allowed.
+		count: 1
+		path: src/Compiler.php
+
+	-
+		sniff: Squiz.PHP.Heredoc.NotAllowed
+		message: 'Use of heredoc and nowdoc syntax ("<<<") is not allowed; use standard strings or inline HTML instead'
+		count: 1
+		path: src/Compiler.php
+
+	-
+		sniff: Forrest79CodingStandard.Exceptions.ExceptionDeclaration.NotChainable
+		message: Exception is not chainable. It must have optional \Throwable as last constructor argument and has "array".
+		count: 1
+		path: src/Exceptions/TooManySourcesException.php
+
