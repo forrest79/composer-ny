@@ -83,7 +83,7 @@ final class SourceFile
 
 
 	/**
-	 * @param array<string, mixed> $data
+	 * @param array<mixed> $data
 	 */
 	private function writeJson(array $data): void
 	{
