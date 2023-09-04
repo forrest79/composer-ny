@@ -78,7 +78,7 @@ config:
 		dealerdirect/phpcodesniffer-composer-installer: false
 ```
 
-> IMPORTANT: You can use only one definition file in directory.
+> IMPORTANT: You can use only one definition file in a directory.
 
 ## How does it work?
 
@@ -86,15 +86,15 @@ Simply! At startup is classic `composer.json` generated from YAML or NEON defini
 
 You can keep generated `composer.json` by calling `composer generate-json`.
 
-When `composer.json` is changed by Composer (ie. after `composer require` command etc.), new definition file in YAML or NEON format is saved next to the original definition file and you must make manual diff and merge.
+When `composer.json` is changed by Composer (i.e., after `composer require` command etc.), new definition file in YAML or NEON format is saved next to the original definition file, and you must make manual diff and merge.
 
 ## Installation
 
-There is no installation script or self update command for ComposerNY. You must install or update it manually. Versions correspond to the original Composer versions and only the current Composer line is supported.
+There is no installation script or self-update command for ComposerNY. You must install or update it manually. Versions correspond to the original Composer versions, and only the current Composer line is supported.
 
-You can manually download compiled `phar` from releases or replace original Composer. For example in Linux:
+You can manually download compiled `phar` from releases or replace original Composer. For example, on Linux:
 
 ```bash
 $ which composer # ie. `/usr/local/bin/composer`
-$ sudo wget -O /usr/local/bin/composer https://github.com/forrest79/ComposerNY/releases/download/v2.6.1/composer.phar
+$ sudo wget -O /usr/local/bin/composer https://github.com/forrest79/ComposerNY/releases/download/v2.6.2/composer.phar
 ```
