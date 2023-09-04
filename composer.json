@@ -7,15 +7,15 @@
 		}
 	],
 	"require": {
-		"composer/composer": "2.5.8",
+		"composer/composer": "2.6.0",
 		"nette/neon": "^3.4",
 		"php": "^8.0",
 		"symfony/console": "^6.0",
 		"symfony/yaml": "^6.0"
 	},
 	"require-dev": {
-		"forrest79/phpcs": "^0.9",
-		"forrest79/phpcs-ignores": "^0.1",
+		"forrest79/phpcs": "^1.1",
+		"forrest79/phpcs-ignores": "^0.3",
 		"phpstan/phpstan": "^1.10",
 		"phpstan/phpstan-strict-rules": "^1.5"
 	},
