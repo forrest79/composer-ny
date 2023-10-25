@@ -1,6 +1,6 @@
 # ComposerNY
 
-[![Build](https://github.com/forrest79/ComposerNY/actions/workflows/build.yml/badge.svg?branch=master)](https://github.com/forrest79/ComposerNY/actions/workflows/build.yml)
+[![Build](https://github.com/forrest79/composer-ny/actions/workflows/build.yml/badge.svg?branch=master)](https://github.com/forrest79/composer-ny/actions/workflows/build.yml)
 
 ## tl;dr
 
@@ -96,5 +96,5 @@ You can manually download compiled `phar` from releases or replace original Comp
 
 ```bash
 $ which composer # ie. `/usr/local/bin/composer`
-$ sudo wget -O /usr/local/bin/composer https://github.com/forrest79/ComposerNY/releases/download/v2.6.5/composer.phar
+$ sudo wget -O /usr/local/bin/composer https://github.com/forrest79/composer-ny/releases/download/v2.6.5/composer.phar
 ```
