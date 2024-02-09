@@ -110,7 +110,7 @@ final class Compiler
 			->notPath('/\/(composer\.(json|lock)|[A-Z]+\.md(?:own)?|\.gitignore|appveyor.yml|phpunit\.xml\.dist|phpstan\.neon\.dist|phpstan-config\.neon|phpstan-baseline\.neon)$/')
 			->notPath('/bin\/(jsonlint|validate-json|simple-phpunit|phpstan|phpstan\.phar)(\.bat)?$/')
 			->notPath('symfony/console/Resources/completion.fish')
-			->notPath('symfony/yaml/Resources/bin/yaml-lint')
+			->notPath('symfony/console/Resources/completion.zsh')
 			->notPath('justinrainbow/json-schema/demo/')
 			->notPath('justinrainbow/json-schema/dist/')
 			->notPath('nette/neon/contributing.md')
@@ -119,7 +119,6 @@ final class Compiler
 			->notPath('bin/composer')
 			->notPath('bin/neon-lint')
 			->notPath('bin/yaml-lint')
-			->notPath('composer/installed.json')
 			->notPath('composer/CODE_OF_CONDUCT.md')
 			->notPath('composer/PORTING_INFO')
 			->notPath('composer/UPGRADE-2.0.md')
@@ -140,6 +139,7 @@ final class Compiler
 
 		$extraFiles = [];
 		foreach ([
+			__DIR__ . '/../vendor/composer/installed.json',
 			__DIR__ . '/../vendor/composer/spdx-licenses/res/spdx-exceptions.json',
 			__DIR__ . '/../vendor/composer/spdx-licenses/res/spdx-licenses.json',
 			CaBundle::getBundledCaBundlePath(),
@@ -223,7 +223,7 @@ final class Compiler
 		$pathPrefix = dirname(__DIR__) . DIRECTORY_SEPARATOR;
 
 		$pos = strpos($realPath, $pathPrefix);
-		$relativePath = ($pos !== FALSE) ? substr_replace($realPath, '', $pos, strlen($pathPrefix)) : $realPath;
+		$relativePath = $pos !== FALSE ? substr_replace($realPath, '', $pos, strlen($pathPrefix)) : $realPath;
 
 		return strtr($relativePath, '\\', '/');
 	}

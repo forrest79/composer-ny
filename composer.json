@@ -7,11 +7,11 @@
 		}
 	],
 	"require": {
-		"composer/composer": "2.6.6",
+		"composer/composer": "2.7.0",
 		"nette/neon": "^3.4",
-		"php": "^8.0",
-		"symfony/console": "^6.0",
-		"symfony/yaml": "^6.0"
+		"php": "^8.2",
+		"symfony/console": "^7.0",
+		"symfony/yaml": "^7.0"
 	},
 	"require-dev": {
 		"forrest79/phpcs": "^1.5",
@@ -34,9 +34,6 @@
 		"tests": "bin/composer && composer compile && tests/run-tests"
 	},
 	"config": {
-		"platform": {
-        	"php": "8.0.2"
-		},
  		"allow-plugins": {
 			"dealerdirect/phpcodesniffer-composer-installer": false
 		}
