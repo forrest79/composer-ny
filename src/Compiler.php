@@ -140,6 +140,7 @@ final class Compiler
 		$extraFiles = [];
 		foreach ([
 			__DIR__ . '/../vendor/composer/installed.json',
+			__DIR__ . '/../vendor/composer/pcre/extension.neon',
 			__DIR__ . '/../vendor/composer/spdx-licenses/res/spdx-exceptions.json',
 			__DIR__ . '/../vendor/composer/spdx-licenses/res/spdx-licenses.json',
 			CaBundle::getBundledCaBundlePath(),
