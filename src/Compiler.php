@@ -28,7 +28,7 @@ use Symfony\Component\Finder\Finder;
  */
 final class Compiler
 {
-	private const ORIGINAL_COMPILER_MD5_HASH = '47df289df291bd1aaddd1d4baa74c813';
+	private const ORIGINAL_COMPILER_MD5_HASH = '947c831bafa8cc25283521c89b9c5d09';
 
 
 	public function compile(string $pharFile = 'composer.phar'): void
@@ -113,6 +113,7 @@ final class Compiler
 			->notPath('symfony/console/Resources/completion.zsh')
 			->notPath('justinrainbow/json-schema/demo/')
 			->notPath('justinrainbow/json-schema/dist/')
+			->notPath('composer/pcre/extension.neon')
 			->notPath('nette/neon/contributing.md')
 			->notPath('nette/neon/license.md')
 			->notPath('nette/neon/readme.md')
@@ -140,7 +141,6 @@ final class Compiler
 		$extraFiles = [];
 		foreach ([
 			__DIR__ . '/../vendor/composer/installed.json',
-			__DIR__ . '/../vendor/composer/pcre/extension.neon',
 			__DIR__ . '/../vendor/composer/spdx-licenses/res/spdx-exceptions.json',
 			__DIR__ . '/../vendor/composer/spdx-licenses/res/spdx-licenses.json',
 			CaBundle::getBundledCaBundlePath(),
