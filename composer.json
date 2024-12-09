@@ -1,5 +1,11 @@
 {
-	"name": "forrest79/composer-ny",
+	"name": "forrest79/composer-yaml-neon",
+	"type": "composer-plugin",
+	"keywords": [
+		"composer",
+		"yaml",
+		"neon"
+    ],
 	"authors": [
 		{
 			"name": "Jakub Trmota",
@@ -7,26 +13,26 @@
 		}
 	],
 	"require": {
-		"composer/composer": "2.8.3",
+		"composer-plugin-api": "^2.6",
 		"nette/neon": "^3.4",
 		"php": "^8.2",
-		"symfony/console": "^7.1",
-		"symfony/yaml": "^7.1"
+		"symfony/yaml": "^7.2"
 	},
 	"require-dev": {
+		"composer/composer": "^2.8",
 		"forrest79/phpcs": "^1.5",
 		"forrest79/phpcs-ignores": "^0.5",
-		"phpstan/phpstan": "^1.12",
-		"phpstan/phpstan-strict-rules": "^1.6"
+		"phpstan/phpstan": "^2.0",
+		"phpstan/phpstan-strict-rules": "^2.0"
 	},
 	"autoload": {
 		"psr-4": {
-			"Forrest79\\ComposerNY\\": "src"
+			"Forrest79\\ComposerYamlNeon\\": "src"
 		}
 	},
-	"bin": [
-		"bin/composer"
-	],
+	"extra": {
+		"class": "Forrest79\\ComposerYamlNeon\\Plugin"
+	},
 	"scripts": {
 		"compile": "@php -dphar.readonly=0 bin/compile && composer install -q --dev",
 		"phpcs": "vendor/bin/phpcs --bootstrap=vendor/forrest79/phpcs-ignores/src/bootstrap.php -s src",

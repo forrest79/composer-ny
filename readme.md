@@ -4,7 +4,7 @@
 
 ## tl;dr
 
-Use classic [Composer](https://github.com/composer/composer) with definition file in [NEON](https://ne-on.org/) (`composer.neon`) or [YAML](https://yaml.org/) (`composer.yaml`/`composer.yml`) format instead of JSON.
+Use classic [Composer](https://github.com/composer/composer) with the definition file in [YAML](https://yaml.org/) (`composer.yaml`/`composer.yml`) or [NEON](https://ne-on.org/) (`composer.neon`)format instead of JSON.
 
 ## How to use it
 
