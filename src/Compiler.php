@@ -87,6 +87,7 @@ final class Compiler
 		$phar->startBuffering();
 
 		$finderSort = static function ($a, $b): int {
+			assert($a instanceof \SplFileInfo && $b instanceof \SplFileInfo);
 			return strcmp(strtr($a->getRealPath(), '\\', '/'), strtr($b->getRealPath(), '\\', '/'));
 		};
 

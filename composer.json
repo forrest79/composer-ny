@@ -7,7 +7,7 @@
 		}
 	],
 	"require": {
-		"composer/composer": "2.8.3",
+		"composer/composer": "2.8.4",
 		"nette/neon": "^3.4",
 		"php": "^8.2",
 		"symfony/console": "^7.1",
@@ -16,8 +16,8 @@
 	"require-dev": {
 		"forrest79/phpcs": "^1.5",
 		"forrest79/phpcs-ignores": "^0.5",
-		"phpstan/phpstan": "^1.12",
-		"phpstan/phpstan-strict-rules": "^1.6"
+		"phpstan/phpstan": "^2.0",
+		"phpstan/phpstan-strict-rules": "^2.0"
 	},
 	"autoload": {
 		"psr-4": {
