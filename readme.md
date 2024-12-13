@@ -1,3 +1,5 @@
+=== THIS REPOSITORY IS NO LONGER MAINTAINED - USE PLUGIN [FORREST79/COMPOSER-YAML-NEON-PLUGIN](https://github.com/forrest79/composer-yaml-neon-plugin) ===
+
 # ComposerNY
 
 [![Build](https://github.com/forrest79/composer-ny/actions/workflows/build.yml/badge.svg?branch=master)](https://github.com/forrest79/composer-ny/actions/workflows/build.yml)
